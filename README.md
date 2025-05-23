@@ -1,3 +1,5 @@
+[English Version](README_en.md) | [中文版](README.md)
+
 # NockChain 挖矿部署教程 ubuntu22.04
 #### 不建议用什么一键脚本，本来图简单，到时候各种报错不成功，建议自己部署同时参考官方文档
 

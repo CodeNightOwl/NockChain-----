@@ -285,15 +285,24 @@ rm -rf ./.data.nockchain .socket/nockchain_npc.sock
 #用pm2启动挖矿节点
 pm2 start nockchain.json
 
-#查看pm2状态
+#查看pm2状态,如下面表格，内存占大约17.4G这个才是表示成功的
 pm2 list
 
- #查看日志
+#查看日志，确定是否正常
 pm2 logs nockchain-miner1
 
 #保存pm2进程列表和状态
 pm2 save
 ``
+┌────┬─────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name                │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ nockchain-miner1    │ default     │ N/A     │ fork    │ 52925    │ 20m    │ 0    │ online    │ 0%       │ 17.4gb   │ ubuntu   │ disabled │
+│ 2  │ nockchain-miner2    │ default     │ N/A     │ fork    │ 53320    │ 18m    │ 0    │ online    │ 0%       │ 17.4gb   │ ubuntu   │ disabled │
+│ 4  │ nockchain-miner3    │ default     │ N/A     │ fork    │ 53662    │ 5m     │ 0    │ online    │ 0%       │ 17.4gb   │ ubuntu   │ disabled │
+│ 5  │ nockchain-miner4    │ default     │ N/A     │ fork    │ 53789    │ 4m     │ 0    │ online    │ 0%       │ 2.4gb    │ ubuntu   │ disabled │
+│ 6  │ nockchain-miner5    │ default     │ N/A     │ fork    │ 53903    │ 3m     │ 0    │ online    │ 0%       │ 724.0mb  │ ubuntu   │ disabled │
+└────┴─────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
 
 
 ### 11.那现在都正常了，我怎么知道机器的资源占用，到底能开几个？

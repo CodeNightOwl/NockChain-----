@@ -1,7 +1,5 @@
 [中文版](README.md) | [English Version](README_en.md)
 
-[Chinese Version](README.md) | [English Version](README_en.md)
-
 # NockChain Mining Deployment Tutorial ubuntu22.04
 #### It is not recommended to use one-click scripts as they may cause various errors. Manual deployment while referring to the official documentation is preferred.
 

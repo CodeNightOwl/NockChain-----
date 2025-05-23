@@ -236,6 +236,66 @@ unset https_proxy
 等等,看自己的需求
 ```
 
+```
+#安装nvm,nvm是node的版本管理工具,如果用pm2的话
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+source ~/.bashrc
+nvm install 18
+```
+#### 例: 用pm2来运行多个实例,在node1,node2 ...目录下创建nockchain.json文件
+```
+{
+  "name": "nockchain-miner1",
+  "script": "nockchain",
+  "args": [
+    "--mine",
+    "--mining-pubkey",
+    "上面创建的公钥",
+    "--peer", "/ip4/95.216.102.60/udp/3006/quic-v1",
+    "--peer", "/ip4/65.108.123.225/udp/3006/quic-v1",
+    "--peer", "/ip4/65.109.156.108/udp/3006/quic-v1",
+    "--peer", "/ip4/65.21.67.175/udp/3006/quic-v1",
+    "--peer", "/ip4/65.109.156.172/udp/3006/quic-v1",
+    "--peer", "/ip4/34.174.22.166/udp/3006/quic-v1",
+    "--peer", "/ip4/34.95.155.151/udp/30000/quic-v1",
+    "--peer", "/ip4/34.18.98.38/udp/30000/quic-v1",
+    "--peer", "/ip4/96.230.252.205/udp/3006/quic-v1",
+    "--peer", "/ip4/94.205.40.29/udp/3006/quic-v1",
+    "--peer", "/ip4/159.112.204.186/udp/3006/quic-v1",
+    "--peer", "/ip4/217.14.223.78/udp/3006/quic-v1"
+  ],
+  "env": {
+    "RUST_LOG": "info,nockchain=info,nockchain_libp2p_io=info,libp2p=info,libp2p_quic=info",
+    "MINIMAL_LOG_FORMAT": "true"
+  },
+  "log_date_format": "YYYY-MM-DD HH:mm Z",
+  "error_file": "logs/error.log",
+  "out_file": "logs/out.log",
+  "merge_logs": true,
+  "autorestart": true
+}
+```
+```bash
+#进入节点目录
+cd ~/nockchain/node1
+
+#重新启动，请先删除旧的数据文件：
+rm -rf ./.data.nockchain .socket/nockchain_npc.sock
+
+#用pm2启动挖矿节点
+pm2 start nockchain.json
+
+#查看pm2状态
+pm2 list
+
+ #查看日志
+pm2 logs nockchain-miner1
+
+#保存pm2进程列表和状态
+pm2 save
+``
+
+
 ### 11.那现在都正常了，我怎么知道机器的资源占用，到底能开几个？
 ```bash
 #安装htop

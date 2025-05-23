@@ -112,6 +112,17 @@ cp .env node2/
 # 在其自己的目录中运行每个节点，如果你有多个节点，重复此步骤，如果只运行一个，就node1即可
 cd node1 && sh ../scripts/run_nockchain_miner.sh
 cd node2 && sh ../scripts/run_nockchain_miner.sh
+
+
+#如上上面两行命令有问题，可以按如下
+
+#例如启动第1个节点挖矿
+cd node1
+../scripts/run_nockchain_miner.sh
+
+#例如启动第2个节点挖矿
+cd node2
+../scripts/run_nockchain_miner.sh
 ```
 
 成功后一直刷新类似如下样子
@@ -120,13 +131,13 @@ cd node2 && sh ../scripts/run_nockchain_miner.sh
 2025-05-22T18:46:51.660065Z TRACE Transport::dial{address=/ip4/82.66.206.63/udp/2101/quic-v1/p2p/12D3KooWDeTg8wLuZj6SMTrsNDmyfpt9bVevXrLgRGgcHSAa4rSo}:drive{id=24}:send{space=Initial pn=4}: quinn_proto::connection::packet_builder: PADDING * 871
 
 ```
-查看钱包余额
+查看钱包余额,注意文件路径(要cd 到 node1目录下)
 ```bash
 # List all notes (UTXOs) that your node has seen
-nockchain-wallet --nockchain-socket ./nockchain.sock list-notes
+nockchain-wallet --nockchain-socket .socket/nockchain_npc.sock list-notes
 
 # List all notes by pubkey
-nockchain-wallet --nockchain-socket ./nockchain.sock list-notes-by-pubkey <your-pubkey>
+nockchain-wallet --nockchain-socket .socket/nockchain_npc.sock list-notes-by-pubkey <your-pubkey>
 ```
 
 

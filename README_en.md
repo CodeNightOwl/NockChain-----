@@ -1,5 +1,7 @@
 [中文版](README.md) | [English Version](README_en.md)
 
+# This is a stupid project, even if you successfully deploy it, your gains will still be zero. Check out their official Twitter account for more information.
+
 # NockChain Mining Deployment Tutorial ubuntu22.04
 #### It is not recommended to use one-click scripts as they may cause various errors. Manual deployment while referring to the official documentation is preferred.
 
